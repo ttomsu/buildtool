@@ -1569,6 +1569,14 @@ telemetry:
 
     script.append('echo "{}" > ~/.hal/default/profiles/echo-local.yml'.format(telemetry_config))
 
+    igor_config = '''\
+logging:
+  level:
+    com.netflix.spinnaker.igor.jenkins: TRACE
+    com.netflix.spinnaker.igor.polling: TRACE
+'''
+    script.append('echo "{}" > ~/.hal/default/profiles/igor-local.yml'.format(igor_config))
+
     if options.halyard_profile_dir:
       # Unpack the tar file into halyard's defualt profile directory.
       script.extend([
